@@ -1,0 +1,391 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+canvas {
+    background-color: white;
+    margin: 1rem;
+}
+
+.canvasParent {
+    margin: 0px;
+    padding: 0px;
+    background-color: silver;
+    overflow: auto;
+}
+
+/* scroller css */
+
+.canvasParent::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: transparent;
+}
+
+.canvasParent::-webkit-scrollbar-track {
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.5);
+    background-color: silver;
+    border-radius: 10px;
+}
+
+.canvasParent::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.2);
+    background-color: rgba(53, 53, 53, 0.466);
+}
+
+.canvasParent::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+.images {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    margin: 0.5rem;
+}
+
+nav {
+    position: absolute;
+    width: 100%;
+    flex-direction: column;
+    background-color: rgb(56, 56, 56);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: auto;
+    left: 0px;
+    top: -80px;
+    transition: top 500ms ease;
+}
+
+.pull {
+    filter: invert(1);
+    transition: all 500ms ease;
+}
+
+
+.puller {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 2.5rem;
+    background-color: rgba(255, 254, 254, 0);
+}
+
+.list {
+    width: 70%;
+    list-style: none;
+    display: flex;
+    border: 3px solid black;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    height: 4rem;
+    border-radius: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    background-color: white;
+}
+
+.tool-img {
+    height: 4rem;
+    width: 4rem;
+    margin-right: 1rem;
+}
+
+.toolBar {
+    display: flex;
+    justify-content: center;
+    background-color: brown;
+}
+
+.pencil-size {
+    height: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.eraser-size {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.pencil-color {
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+input {
+    width: 90%;
+}
+
+.colors {
+    width: 20%;
+    height: 60%;
+    margin-right: .25rem;
+    border-radius: 50%;
+}
+
+.multiColor {
+    border: 0px solid;
+    background: transparent;
+}
+
+.red {
+    background-color: rgb(255, 0, 0);
+}
+
+.green {
+    background-color: green;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.black {
+    background-color: black;
+}
+
+.parent {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+    font-family: 'Russo One', sans-serif;
+    width: 3rem;
+    margin-right: 1rem;
+    user-select: none;
+    cursor: pointer;
+}
+
+.selected {
+    border-radius: 2rem;
+    background-color: transparent;
+    border: 3px solid deepskyblue;
+}
+
+.pencil-options {
+    position: absolute;
+    /* these left and top values are relative to the parent and Not the page */
+    left: -4rem;
+    top: 4rem;
+    height: 8rem;
+    width: 12rem;
+    background-color: rgba(255, 0, 0, 0);
+    border: 1px solid black;
+    border-radius: 10px;
+    display: none;
+}
+
+.eraser-options {
+    position: absolute;
+    /* these left and top values are relative to the parent and Not the page */
+    left: -4rem;
+    top: 4rem;
+    height: 4rem;
+    width: 12rem;
+    color: rgba(122, 14, 14, 0.0);
+    display: none;
+}
+
+.stickyNote {
+    position: absolute;
+    left: 40%;
+    top: 40%;
+    height: 16rem;
+    width: 15rem;
+    background-color: rgba(49, 49, 49, 0.993);
+}
+
+.navSticky {
+    height: 13%;
+    width: 100%;
+}
+
+.bodySticky {
+    font-family: 'Lobster', cursive;
+    background-color: whitesmoke;
+    min-height: 87%;
+    width: 100%;
+    outline: 0px solid transparent;
+}
+
+.stickyClose {
+    cursor: pointer;
+    float: right;
+    margin-top: 5px;
+    margin-right: 5px;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background-color: red;
+    /* for providing cross */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-family: cursive;
+    font-size: smaller;
+}
+
+#file-input {
+    display: none;
+}
+
+.uploadedImage {
+    position: absolute;
+    height: 100px;
+    width: auto;
+    top: 40%;
+    left: 40%;
+}
+
+.magParent {
+    position: relative;
+}
+
+.magnifier {
+    position: absolute;
+    /* these left and top values are relative to the parent and Not the page */
+    left: -4rem;
+    top: 4rem;
+    height: 4rem;
+    width: 12rem;
+    background-color: rgba(255, 0, 0, 0);
+    border-radius: 10px;
+    display: none;
+}
+
+.magnification-size {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.range {
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+.range::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    background: silver;
+    border: none;
+    border-radius: 3px;
+}
+
+.range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: deepskyblue;
+    margin-top: -4px;
+}
+
+.range:focus {
+    outline: none;
+}
+
+/* hover css */
+.hover {
+    position: absolute;
+    z-index: 1;
+    top: 4rem;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(0, 0, 0, 0.493);
+    padding: 5px;
+    height: 1rem;
+    visibility: hidden;
+}
+
+.correct {
+    top: 5rem !important;
+}
+
+.images:hover+.hover {
+    visibility: visible;
+}
+
+@media (max-width:750px) {
+    .correct {
+        top: 30.5rem !important;
+        left: 1.5rem;
+    }
+
+    .hover {
+        top: 3rem;
+    }
+
+    nav {
+        top: 0px;
+        height: 100%;
+        width: 12rem;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        transition: left 500ms ease;
+        left: -145px;
+    }
+
+    .list {
+        flex-direction: column;
+        height: 70%;
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+        transition: none;
+    }
+
+    .pencil-options {
+        left: 8rem;
+        top: -2rem;
+    }
+
+    .eraser-options {
+        top: -0.5rem;
+        left: 8rem;
+    }
+
+    .magnifier {
+        top: -0.5rem;
+        left: 6rem;
+    }
+
+
+    .pull {
+        transform: rotate(270deg);
+    }
+
+}

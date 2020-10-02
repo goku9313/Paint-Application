@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <link rel="shortcut icon" href="./painting.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Russo+One&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <ul class="list">
+            <li class="pencilParent parent selected"><img src="Black_Pencil.svg" alt="" class="pencil images"
+                    draggable="false">
+                <p class="text">Pencil</p>
+                <div class="pencil-options">
+                    <div class="pencil-size">
+                        <input type="range" class="range" min="1" max="50">
+                    </div>
+                    <div class="pencil-color">
+                        <input type="color" class="colors multiColor" value="#ff00ff"
+                            onchange="changeColor(this.value);">
+                        <div class="colors black" onclick="changeColor('black')"></div>
+                        <div class="colors red" onclick="changeColor('red')"></div>
+                        <div class="colors green" onclick="changeColor('green')"></div>
+                        <div class="colors blue" onclick="changeColor('blue')"></div>
+                    </div>
+                </div>
+            </li>
+            <li class="eraserParent parent"><img src="Eraser.svg" alt="" class="eraser images" draggable="false">
+                <div class="eraser-options">
+                    <div class="eraser-size">
+                        <input type="range" class="range" min="10" max="50">
+                    </div>
+                </div>
+            </li>
+            <li class="stickyParent parent"><img src="./StickyNote.svg" alt="" class="sticky images" draggable="false">
+                <div class="hover" style="width: 4.8rem;">Sticky Note</div>
+            </li>
+            <li class="photoParent" style="height: 3rem;">
+                <label for="file-input"><img src="./Photo.svg" alt="" class="photoUpload images" draggable="false">
+                    <div class="correct hover">Upload Image</div>
+                </label>
+                <input type="file" id="file-input" class="inputImage" accept="image/png, image/jpeg">
+            </li>
+            <li class="downloadParent parent"><img src="./Download.svg" alt="" class="download images"
+                    draggable="false">
+                <div class="hover">Download</div>
+            </li>
+            <li class="undoParent parent"><img src="./Undo.svg" alt="" class="undo images" draggable="false">
+                <div class="hover" style="width: 3rem;">Un-Do</div>
+            </li>
+            <li class="redoParent parent"><img src="./Redo.svg" alt="" class="redo images" draggable="false">
+                <div class="hover" style="width: 3rem;">Re-Do</div>
+            </li>
+            <li class="magParent parent"><img src="./Glass.svg" alt="" class="glass images" draggable="false">
+                <div class="hover">Magnifier</div>
+                <div class="magnifier">
+                    <div class="magnification-size">
+                        <input type="range" class="range" min="10" max="200">
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="puller">
+            <img src="./download.png" alt="pull" class="pull images" draggable="false">
+        </div>
+    </nav>
+    <div class="canvasParent">
+        <canvas></canvas>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js" crossorigin></script>
+    <script src="./main.js"></script>
+    <script src="./receiver.js"></script>
+    <script src="./magnifier.js"></script>
+    <script src="./eraser.js"></script>
+    <script src="./pencil.js"></script>
+    <script src="./sticky.js"></script>
+    <script src="./image.js"></script>
+    <script src="./download.js"></script>
+    <script src="./undo_redo.js"></script>
+</body>
+
+</html>
